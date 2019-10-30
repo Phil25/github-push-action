@@ -29,4 +29,5 @@ remote_repo="git@github.com:${REPOSITORY}.git"
 git remote rm origin || true
 git remote add origin "${remote_repo}"
 
+echo "Pushing to ${remote_repo}"
 git push origin ${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
