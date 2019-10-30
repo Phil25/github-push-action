@@ -25,4 +25,8 @@ fi
 cd ${INPUT_DIRECTORY}
 
 remote_repo="git@github.com:${REPOSITORY}.git"
-git push "${remote_repo}" ${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
+
+git remote rm origin || true
+git remote add origin "${remote_repo}"
+
+git push origin ${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
