@@ -13,12 +13,16 @@ echo "Push to branch $INPUT_BRANCH";
     exit 1;
 };
 
+mkdir "/root/.ssh"
+ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
+echo "${INPUT_GITHUB_TOKEN}" > "/root/.ssh/id_rsa"
+chmod 400 "/root/.ssh/id_rsa"
+
 if ${INPUT_FORCE}; then
     _FORCE_OPTION='--force'
 fi
 
 cd ${INPUT_DIRECTORY}
 
-remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
-
-git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
+remote_repo="git@github.com:${REPOSITORY}.git"
+git push "${remote_repo}" ${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
