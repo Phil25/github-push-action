@@ -13,7 +13,7 @@ echo "Push to branch $INPUT_BRANCH";
     exit 1;
 };
 
-mkdir "/root/.ssh"
+mkdir -v "/root/.ssh"
 ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
 echo "${INPUT_GITHUB_TOKEN}" > "/root/.ssh/id_rsa"
 chmod 400 "/root/.ssh/id_rsa"
