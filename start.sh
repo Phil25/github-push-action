@@ -35,4 +35,4 @@ git add main.pdf -f
 git commit -m "Update PDF"
 
 echo "Pushing to ${remote_repo}"
-git push origin ${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
+git push origin HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
