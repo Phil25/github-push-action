@@ -11,6 +11,10 @@ LABEL "com.github.actions.color"="green"
 
 COPY README.md LICENSE start.sh /
 
-RUN apk add --no-cache git
+RUN apk add --no-cache \
+    bash \
+    git \
+    openssh-client \
+    ca-certificates
 
 CMD ["/start.sh"]
