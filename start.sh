@@ -29,5 +29,10 @@ remote_repo="git@github.com:${REPOSITORY}.git"
 git remote rm origin || true
 git remote add origin "${remote_repo}"
 
+git config --local user.email "action@github.com"
+git config --local user.name "GitHub Action"
+git add main.pdf -f
+git commit -m "Update PDF"
+
 echo "Pushing to ${remote_repo}"
 git push origin ${INPUT_BRANCH} --follow-tags $_FORCE_OPTION;
